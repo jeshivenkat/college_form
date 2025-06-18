@@ -28,6 +28,7 @@ def about():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    submitted = False
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
@@ -39,8 +40,9 @@ def contact():
                        (name, email, message))
         conn.commit()
         conn.close()
-        return redirect('/contact')
-    return render_template('contact.html')
+        submitted = True
+    return render_template('contact.html', submitted=submitted)
+
 
 @app.route('/admin')
 def admin():

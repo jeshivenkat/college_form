@@ -6,6 +6,12 @@
 </head>
 <body class="container py-5">
     <h2>Contact Form</h2>
+    {% if submitted %}
+    <div class="alert alert-success" role="alert">
+        Thank you! Your message has been submitted successfully.
+    </div>
+    {% endif %}
+
     <form method="POST">
         <div class="mb-3">
             <label>Name:</label>
